@@ -3,4 +3,5 @@ rm -rf /wordpress/
 service nginx restart
 service mysql restart
 service php7.3-fpm start
-tail -f /dev/null
+# tail -f /dev/null
+sleep infinity & wait

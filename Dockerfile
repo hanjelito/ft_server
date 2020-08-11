@@ -6,7 +6,7 @@
 #    By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/05 09:43:38 by juan-gon          #+#    #+#              #
-#    Updated: 2020/08/11 14:08:51 by juan-gon         ###   ########.fr        #
+#    Updated: 2020/08/11 20:17:13 by juan-gon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,11 @@ FROM debian:buster
 COPY srcs/mysql.sh ./root/
 COPY srcs/nginx.conf ./root/
 COPY srcs/config.inc.php ./root/
-COPY srcs/start.sh ./root/
 COPY srcs/wordpress.tar.gz ./root/
 COPY srcs/wordpress.sql ./root/
 COPY srcs/wp-config.php ./root/
 COPY srcs/phpMyAdmin.tar.gz ./root/
+COPY srcs/nginx-start.sh ./root/
 
 RUN apt-get -y update                           &&\
     apt-get -y upgrade                          &&\
@@ -43,6 +43,7 @@ RUN wget -O mkcert https://github.com/FiloSottile/mkcert/releases/download/v1.3.
     mv mkcert /usr/local/bin                    &&\
     mkcert -install
 
+
 RUN service nginx start                                                     &&\
     cp /root/nginx.conf /etc/nginx/sites-available/localhost                &&\
     ln -s /etc/nginx/sites-available/localhost /etc/nginx/sites-enabled/    &&\
@@ -63,4 +64,4 @@ RUN mkcert localhost                                &&\
 EXPOSE 80 443
 
 
-CMD bash root/start.sh
+CMD bash root/nginx-start.sh
