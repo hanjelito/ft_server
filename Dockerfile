@@ -6,7 +6,7 @@
 #    By: juan-gon <juan-gon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/05 09:43:38 by juan-gon          #+#    #+#              #
-#    Updated: 2020/08/11 20:54:37 by juan-gon         ###   ########.fr        #
+#    Updated: 2020/08/11 21:05:26 by juan-gon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ RUN tar xzvf /root/phpMyAdmin.tar.gz                                        &&\
     chown -R www-data:www-data /var/lib/phpmyadmin                          &&\
     cp /root/config.inc.php /var/www/html/phpmyadmin/
 
-RUN apt-get install vim
+RUN apt-get -y install vim
 
 RUN wget -O mkcert https://github.com/FiloSottile/mkcert/releases/download/v1.3.0/mkcert-v1.3.0-linux-amd64 &&\
     chmod +x mkcert                             &&\
